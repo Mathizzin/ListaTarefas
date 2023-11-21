@@ -1,0 +1,39 @@
+<div class="card-container">
+    <div class="card">
+        <h2>Cadastrar Tarefa</h2>
+        <form [formGroup]="formularioTarefa" (ngSubmit)="cadastrarTarefa()">
+            <div>
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" formControlName="descricao" />
+                <div *ngIf="formularioTarefa.get('descricao')?.hasError('required')">
+                    A descrição é obrigatória.
+                </div>
+            </div>
+
+            <div>
+                <label for="concluida">Concluída:</label>
+                <input type="checkbox" id="concluida" formControlName="concluida" />
+            </div>
+
+            <div>
+                <label for="usuarioId">ID do Usuário:</label>
+                <input type="text" id="usuarioId" formControlName="usuarioId" />
+                <div *ngIf="formularioTarefa.get('usuarioId')?.hasError('required')">
+                    O ID do usuário é obrigatório.
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="formularioTarefa.invalid">Cadastrar</button>
+            <button><a href="" routerLink="">Home</a></button>
+
+        </form>
+
+        <!-- Adicione o seguinte para depuração -->
+        <div *ngIf="carregando">
+            <p>Cadastrando...</p>
+        </div>
+        <div *ngIf="erroAoCadastrar">
+            <p>Erro ao cadastrar tarefa. Por favor, tente novamente.</p>
+        </div>
+    </div>
+</div>

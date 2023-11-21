@@ -1,0 +1,16 @@
+<div class="card-container">
+    <div *ngFor="let tarefa of tarefas" class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ tarefa.descricao }}</h5>
+            <p class="card-text">Concluída: {{ tarefa.concluida ? 'Sim' : 'Não' }}</p>
+            <p class="card-text">Categoria: {{ tarefa.categoria?.nome }}</p>
+        </div>
+    </div>
+</div>
+
+<button><a href="" routerLink="/CadastrarTarefa">CadastrarTarefa</a></button>
+
+<!-- Adicione o seguinte para depuração -->
+<div *ngIf="!tarefas || tarefas.length === 0">
+    <p>Nenhuma tarefa encontrada.</p>
+</div>
